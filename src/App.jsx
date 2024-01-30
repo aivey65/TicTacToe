@@ -21,6 +21,33 @@ function findActivePlayer(gameTurns) {
   return currentPlayer;
 }
 
+function findWinner(gameBoard, players) {
+  let winner = null;
+
+  for (const combo of WINNING_COMBINATIONS) {
+    const firstSquare = gameBoard[combo[0].row][combo[0].col];
+    const secondSquare = gameBoard[combo[1].row][combo[1].col];
+    const thirdSquare = gameBoard[combo[2].row][combo[2].col];
+
+    if (firstSquare && firstSquare == secondSquare && secondSquare == thirdSquare) {
+      winner = players[firstSquare];
+    }
+  }
+
+  return winner;
+}
+
+function createGameBoard(turnData) {
+  let gameBoard = [...initialGameBoard.map((row) => [...row])];
+
+  for (const turn of turnData) {
+    const { square, player } = turn;
+    gameBoard[square.row][square.col] = player;
+  }
+
+  return gameBoard;
+}
+
 function App() {
   const [playerNames, setPlayerNames] = useState({
     "X": "Player 1",
@@ -28,25 +55,9 @@ function App() {
   });
   const [turnData, setTurnData] = useState([]);
   const activePlayer = findActivePlayer(turnData);
-
-  let gameBoard = [...initialGameBoard.map((row) => [...row])];
-  for (const turn of turnData) {
-    const { square, player } = turn;
-    gameBoard[square.row][square.col] = player;
-  }
-
-  let winner = null;
-  for (const combo of WINNING_COMBINATIONS) {
-    const firstSquare = gameBoard[combo[0].row][combo[0].col];
-    const secondSquare = gameBoard[combo[1].row][combo[1].col];
-    const thirdSquare = gameBoard[combo[2].row][combo[2].col];
-
-    if (firstSquare && firstSquare == secondSquare && secondSquare == thirdSquare) {
-      winner = playerNames[firstSquare];
-    }
-  }
-
-  let hasDraw = turnData.length == 9 && !winner;
+  const gameBoard = createGameBoard(turnData);
+  const winner = findWinner(gameBoard, playerNames);
+  const hasDraw = turnData.length == 9 && !winner;
 
   function handleSelectSquare(rowIndex, colIndex) {
     setTurnData(previousTurns => {

@@ -19,7 +19,7 @@ html {
   font-family: 'Roboto Slab', sans-serif;
   line-height: 1.5;
 
-  color: #ebe7ef;
+  color: var(--Light);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -99,7 +99,7 @@ h1 {
   width: 3rem;
   border: none;
   background: none;
-  color: #c3ba78;
+  color: var(--Accent);
   font-size: 0.9rem;
   cursor: pointer;
   transition: color 0.2s;
@@ -122,7 +122,7 @@ h1 {
   display: inline-block;
   width: 10rem;
   font-size: 1rem;
-  color: #e1dec7;
+  color: var(--Light);
   text-transform: uppercase;
   margin: 0;
   padding: 0.5rem;
@@ -138,7 +138,7 @@ h1 {
   border: none;
   padding: 0.5rem;
   animation: pulse-text 2s infinite;
-  background-color: #46432f;
+  background-color: var(--Black);
   text-align: center;
   text-transform: uppercase;
 }
@@ -146,7 +146,7 @@ h1 {
 .player-symbol {
   margin-left: 1rem;
   font-size: 1rem;
-  color: #e1dec7;
+  color: var(--Light);
 }
 
 ol {
@@ -212,7 +212,7 @@ ol {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(40, 38, 23, 0.95);
+  background-color: var(--Dark-Transparent);
   animation: pop-in 0.5s cubic-bezier(0.68, -0.55, 0.65, 0.52) forwards;
 }
 
@@ -220,14 +220,14 @@ ol {
   font-family: 'Caprasimo', cursive;
   font-size: 4rem;
   text-align: center;
-  color: #fcd256;
+  color: var(--Accent);
   margin: 0;
 }
 
 #game-over p {
   font-size: 2rem;
   text-align: center;
-  color: #e1dec7;
+  color: var(--Light);
 }
 
 #game-over button {
@@ -253,7 +253,7 @@ ol {
 
 #log {
   max-width: 20rem;
-  color: #3f3b00;
+  color: var(--Light);
   list-style: none;
   margin: 2rem auto;
   padding: 0;
@@ -267,8 +267,8 @@ ol {
 }
 
 #log li.highlighted {
-  background-color: #3f3b00;
-  color: white;
+  background-color: var(--Dark-Transparent);
+  color: var(--Light);
 }
 
 #game-hints {
@@ -292,7 +292,7 @@ ol {
   cursor: pointer;
   border: none;
   background: transparent;
-  color: #23221f;
+  color: var(--Dark);
   font: inherit;
   margin-top: 1.5rem;
 }
